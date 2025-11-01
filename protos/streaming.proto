@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package Proto.GrpcDemo;
+
+service Streaming {
+    rpc GetTime (TimeRequest) returns (stream TimeReply);
+    rpc UploadNumbers (stream NumberRequest) returns (NumberSummary);
+    rpc Chat (stream ChatMessage) returns (stream ChatMessage);
+}
+
+message TimeRequest {
+  int32 count = 1;
+}
+
+message TimeReply {
+  string message = 1;
+}
+
+message NumberRequest {
+  int32 number = 1;
+}
+
+message NumberSummary {
+  int32 sum = 1;
+  int32 count = 2;
+}
+
+message ChatMessage {
+  string user = 1;
+  string message = 2;
+}
